@@ -3,9 +3,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>JobSeeker Registration page</title>
-<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Resume Parser</title>
+
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="css/modern-business.css" rel="stylesheet">
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script>
 	function JRegistrationDetail() {
 		var name = document.forms["jRegForm"]["name"];
@@ -47,12 +61,103 @@
 			rpwd.focus();
 			return false;
 		}
-
+		if (pwd.value != rpwd.value ) {
+			window.alert("password Don't Match");
+			rpwd.focus();
+			return false;
+		}
 		return true;
 	}
 </script>
+</head>
+<body>
+	<!-- Navigation -->
+	<nav
+		class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="index.html">Resume Parser</a>
+			
 
-<style>
+		</div>
+	</nav>
+	<!-- Page Content -->
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<div class="card">
+					<div class="card-header">
+						<h3 style="text-align: center">Jobseeker Registration Form</h3>
+					</div>
+					<div class="card-body">
+						<form name="jRegForm" 
+							method="post" action="JobseekerRegister">
+							<div class="form-group row">
+								<label for="full_name"
+									class="col-md-4 col-form-label text-md-right">Name :</label>
+								<div class="col-md-6">
+									<input type="text" id="full_name" class="form-control"
+										name="name">
+								</div>
+							</div>
+
+
+
+							<div class="form-group row">
+								<label for="user_name"
+									class="col-md-4 col-form-label text-md-right">E-mail
+									Address: </label>
+								<div class="col-md-6">
+									<input type="text" id="user_name" class="form-control"
+										name="email">
+								</div>
+							</div>
+
+
+
+							<div class="form-group row">
+								<label for="permanent_address"
+									class="col-md-4 col-form-label text-md-right">Password:
+								</label>
+								<div class="col-md-6">
+									<input type="password" id="permanent_address" class="form-control"
+										name="pwd">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="permanent_address"
+									class="col-md-4 col-form-label text-md-right">Re-enter
+									password: </label>
+								<div class="col-md-6">
+									<input type="password" id="permanent_address" class="form-control"
+										name="rpwd">
+								</div>
+							</div>
+
+
+
+
+
+							<div class="col-md-6 offset-md-4">
+								<button type="submit" class="btn btn-primary" onclick="return JRegistrationDetail()">Register
+								</button>
+								<%
+									String msg = (String) request.getAttribute("errMsg");
+									if (msg != null)
+										out.print(msg);
+								%>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>
+
+<%-- <style>
 JRegistrationDetail {
 	margin-left: 70px;
 	font-weight: bold;
@@ -115,4 +220,4 @@ form {
 	</form>
 </body>
 </html>
-
+ --%>
