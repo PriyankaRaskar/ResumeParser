@@ -1,6 +1,7 @@
 package edu.resume.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import edu.resume.dao.JobseekerDAO;
+import edu.resume.model.ProcessResume;
 
 /**
  * Servlet implementation class UploadResume
@@ -59,17 +61,28 @@ public class UploadResume extends HttpServlet {
 
 			Part filePart = request.getPart("resumeFile"); // Retrieves <input type="file" name="file">
 			String resumeFileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
-			InputStream resumeStream = filePart.getInputStream();
+			InputStream uploadStream = filePart.getInputStream();
 			new File(UPLOAD_DIRECTORY + File.separator + jid).mkdirs();
-			System.out.println("resumeFileName: "+resumeFileName);
-			Path path = Paths.get(UPLOAD_DIRECTORY + File.separator + jid + File.separator + resumeFileName);
-			System.out.println("path:"+path);
-			Files.copy(resumeStream, path);
+			System.out.println("resumeFileName: " + resumeFileName);
+			String completePath = UPLOAD_DIRECTORY + File.separator + jid + File.separator + resumeFileName;
+			Path path = Paths.get(completePath);
+			System.out.println("path:" + path);
+			Files.copy(uploadStream, path);
+			uploadStream.close();
+			InputStream resumeStream = null;
+			try {
+				File file = new File(completePath);
+				resumeStream = new FileInputStream(file);
+				String resumeFileType = Files.probeContentType(file.toPath());
 
+				ProcessResume processor = new ProcessResume(resumeStream, resumeFileType, email);
+				processor.resumeFileProces();
+			} finally {
+				if (resumeStream != null)
+					resumeStream.close();
+			}
 		}
 
 	}
-
-	
 
 }
