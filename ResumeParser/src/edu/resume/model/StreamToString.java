@@ -42,7 +42,7 @@ public class StreamToString {
 			break;
 		}
 
-		return resultText;
+		return resultText.toLowerCase();
 	}
 
 	private String parseDocx() {

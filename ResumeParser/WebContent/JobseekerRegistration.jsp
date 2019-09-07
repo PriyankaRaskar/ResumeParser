@@ -89,8 +89,8 @@
 						<h3 style="text-align: center">Jobseeker Registration Form</h3>
 					</div>
 					<div class="card-body">
-						<form name="jRegForm" 
-							method="post" action="JobseekerRegister">
+					
+						<form name="jRegForm" method="post" action="JobSeekerRegister">
 							<div class="form-group row">
 								<label for="full_name"
 									class="col-md-4 col-form-label text-md-right">Name :</label>
@@ -133,13 +133,9 @@
 								</div>
 							</div>
 
-
-
-
-
 							<div class="col-md-6 offset-md-4">
-								<button type="submit" class="btn btn-primary" onclick="return JRegistrationDetail()">Register
-								</button>
+								<input type="submit" class="btn btn-primary"  value ="Register" onclick="return JRegistrationDetail()">
+								
 								<%
 									String msg = (String) request.getAttribute("errMsg");
 									if (msg != null)

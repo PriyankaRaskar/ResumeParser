@@ -13,7 +13,7 @@ import edu.resume.dao.JobseekerDAO;
  * Servlet implementation class JobseekerRegister
  */
 
-@WebServlet("/JobseekerRegister")
+@WebServlet("/JobSeekerRegister")
 public class JobseekerRegister extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
