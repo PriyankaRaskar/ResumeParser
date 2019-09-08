@@ -1,19 +1,24 @@
 package edu.resume.entity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Set;
 
 public class ResumeField {
-	
+
 	private int jid;
 	private String mobileNumber;
-	private String experience;
-	private String dob;
+	private Float experience;
+	private Date dob;
 	private String pincode;
-	
+	private String email;
+	private String resumePath;
+
 	private Set<String> skills;
 	private Set<String> education;
 	private Set<String> functionalArea;
-	
+
 	public int getJid() {
 		return jid;
 	}
@@ -30,20 +35,47 @@ public class ResumeField {
 		this.mobileNumber = mobileNumber;
 	}
 
-	public String getExperience() {
+	public Float getExperience() {
 		return experience;
 	}
 
 	public void setExperience(String experience) {
-		this.experience = experience;
+
+		if(experience==null)
+			return;
+		experience = experience.substring(0, experience.indexOf(" "));
+
+		if (experience != null) {
+			this.experience = Float.parseFloat(experience);
+		}
 	}
 
-	public String getDob() {
+	public Date getDob() {
 		return dob;
 	}
 
 	public void setDob(String dob) {
-		this.dob = dob;
+		Date date1 = null;
+		if(dob==null)
+			return;
+		try {
+			String format = "";
+
+			if (dob.contains("/")) {
+				format = "dd/MM/yyyy";
+			} else if (dob.contains("-")) {
+				format = "dd-MM-yyyy";
+			} else if (dob.contains(".")) {
+				format = "dd.MM.yyyy";
+			}
+
+			date1 = new SimpleDateFormat(format).parse(dob);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		this.dob = date1;
 	}
 
 	public String getPincode() {
@@ -78,6 +110,22 @@ public class ResumeField {
 		this.functionalArea = functionalArea;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getResumePath() {
+		return resumePath;
+	}
+
+	public void setResumePath(String resumePath) {
+		this.resumePath = resumePath;
+	}
+
 	@Override
 	public String toString() {
 		return "ResumeField [jid=" + jid + ", mobileNumber=" + mobileNumber + ", experience=" + experience + ", dob="
@@ -85,5 +133,4 @@ public class ResumeField {
 				+ functionalArea + "]";
 	}
 
-	
 }

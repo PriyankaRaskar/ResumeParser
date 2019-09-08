@@ -68,7 +68,7 @@ public class KeyWordSets {
 			}
 
 		}
-
+		fieldSet.remove("");
 		return fieldSet;
 
 	}

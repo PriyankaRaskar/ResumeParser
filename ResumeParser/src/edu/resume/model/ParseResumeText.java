@@ -10,9 +10,10 @@ import edu.resume.entity.ResumeField;
 
 public class ParseResumeText {
 
-	private static final String PINCODE_REGX = "\\s[1-9][0-9]{5}\\s";
+	private static final String EXPERIENCE_REGX = "\\d+(\\.\\d{1,2})?\\s+(?:years?)";
+	private static final String PINCODE_REGX = "\\s[1-9][0-9]{5}[^0-9]";
 	private static final String MOBILE_REGX = "(0/91)?[7-9][0-9]{9}";
-	private static final String DOB_REGX = "0[1-9]|1[012])[-/.](0[1-9]|[12][0-9]|3[01])[-/.](19|20)";
+	private static final String DOB_REGX = "(0[1-9]|1[012])[-/.](0[1-9]|[12][0-9]|3[01])[-/.](19|20)\\d\\d";
 	private String parseInputText;
 	private ResumeField resumeFields = new ResumeField();
 	private KeyWordSets keyWordSets;
@@ -57,6 +58,11 @@ public class ParseResumeText {
 		System.out.println("Pincode is"+pincode);
 		resumeFields.setPincode(pincode);
 		
+		//get experience
+		String experience=getParsedFromRegex(EXPERIENCE_REGX);
+		System.out.println("Experience is"+experience);
+		resumeFields.setExperience(experience);
+		
 		
 		
 		return resumeFields;
@@ -77,7 +83,7 @@ public class ParseResumeText {
 		Set<String> result = new HashSet<String>();
 
 		for (String word : wordSet) {
-			if (parseInputText.contains(word))
+			if (parseInputText.contains(" "+word+" "))
 				result.add(word);
 		}
 

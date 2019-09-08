@@ -56,13 +56,19 @@ public class UploadResume extends HttpServlet {
 		String email = request.getParameter("email");
 		System.out.println("Email:" + email);
 
-		int jid = JobseekerDAO.uploadResume(email);
+		int jid = JobseekerDAO.getJidFromEmail(email);
 		if (jid > -1) {
 
 			Part filePart = request.getPart("resumeFile"); // Retrieves <input type="file" name="file">
 			String resumeFileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
 			InputStream uploadStream = filePart.getInputStream();
-			new File(UPLOAD_DIRECTORY + File.separator + jid).mkdirs();
+			File resumeFolder = new File(UPLOAD_DIRECTORY + File.separator + jid);
+			if (resumeFolder.exists()) {
+				deleteResumes(resumeFolder);
+			} else {
+				resumeFolder.mkdirs();
+			}
+
 			System.out.println("resumeFileName: " + resumeFileName);
 			String completePath = UPLOAD_DIRECTORY + File.separator + jid + File.separator + resumeFileName;
 			Path path = Paths.get(completePath);
@@ -75,7 +81,7 @@ public class UploadResume extends HttpServlet {
 				resumeStream = new FileInputStream(file);
 				String resumeFileType = Files.probeContentType(file.toPath());
 
-				ProcessResume processor = new ProcessResume(resumeStream, resumeFileType, email);
+				ProcessResume processor = new ProcessResume(file, resumeStream,resumeFileType, email, jid);
 				processor.resumeFileProces();
 			} finally {
 				if (resumeStream != null)
@@ -83,6 +89,20 @@ public class UploadResume extends HttpServlet {
 			}
 		}
 
+	}
+
+	//delete already present resumes
+	private void deleteResumes(File resumeFolder) {
+
+		if(resumeFolder.isDirectory() == false) {
+			System.out.println("Not a directory. Do nothing");
+			return;
+		}
+		File[] listFiles = resumeFolder.listFiles();
+		for(File file : listFiles){
+			System.out.println("Deleting "+file.getName());
+			file.delete();
+		}
 	}
 
 }

@@ -19,6 +19,7 @@
 
 </head>
 <body>
+				<form class="form-horizontal" action='EmployerSearch' method="POST">
 	<!-- Navigation -->
 	<nav
 		class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -27,81 +28,82 @@
 		</div>
 	</nav>
 	<div class="container register-form">
+
 		<div class="form">
 			<div class="note">
-			<p>Employer's Home Page</p>
+				<p>Employer's Home Page</p>
+				
 			</div>
 
 			<div class="form-content">
 				<div class="row">
 					<div class="col-md-2">
 						<div class="form-group">
-							<span>Functional Area</span>						
-							<input type="text" class="form-control" placeholder=""
-								value="" />
+							<span>Functional Area</span> <input type="text"
+								class="form-control" placeholder="" value="" name="functionarea" />
 						</div>
 
 					</div>
 					<div class="col-md-1">
 						<div class="form-group"></div>
 						<div class="form-group">
-							<select class="browser-default custom-select">
+							<select class="browser-default custom-select" name="select1">
 								<option selected>select menu</option>
-								<option value="1">AND</option>
-								<option value="2">OR</option>
+								<option value="AND">AND</option>
+								<option value="OR">OR</option>
 							</select>
 						</div>
 
 					</div>
 					<div class="col-md-2">
 						<div class="form-group">
-						<span>Education</span>
-							<input type="text" class="form-control"
-								placeholder="" value="" />
+							<span>Education</span> <input type="text" class="form-control"
+								placeholder="" value="" name="education" />
 						</div>
 					</div>
 					<div class="col-md-1">
 						<div class="form-group"></div>
 						<div class="form-group">
-							<select class="browser-default custom-select">
+							<select class="browser-default custom-select" name="select2">
 								<option selected>select menu</option>
-								<option value="1">AND</option>
-								<option value="2">OR</option>
+								<option value="AND">AND</option>
+								<option value="OR">OR</option>
 							</select>
 						</div>
 
 					</div>
 					<div class="col-md-2">
 						<div class="form-group">
-						<span>Skill</span>
-							<input type="text" class="form-control"
-								placeholder="" value="" />
+							<span>Skill</span> <input type="text" class="form-control"
+								placeholder="" value="" name="skill" />
 						</div>
 					</div>
 					<div class="col-md-1">
 						<div class="form-group"></div>
 						<div class="form-group">
-							<select class="browser-default custom-select">
+							<select class="browser-default custom-select" name="select3">
 								<option selected>select menu</option>
-								<option value="1">AND</option>
-								<option value="2">OR</option>
+								<option value="AND">AND</option>
+								<option value="OR">OR</option>
 							</select>
 						</div>
 
 					</div>
-					
+
 					<div class="col-md-2">
 						<div class="form-group">
-						<span> Experience</span>
-							<input type="text" class="form-control"
-								placeholder="" value="" />
+							<span> Experience</span> <input type="text" class="form-control"
+								placeholder="" value="" name="experience" />
 						</div>
 					</div>
-					
+
 				</div>
-				<button type="Submit" class="btnSubmit">Search</button>
+				<input type="Submit" class="btnSubmit" onclick="" value="Search">
+			
 			</div>
+
 		</div>
-	</div>
+
+	</div></form>
 </body>
 </html>
