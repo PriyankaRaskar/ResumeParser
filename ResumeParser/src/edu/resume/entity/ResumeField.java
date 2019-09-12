@@ -43,7 +43,8 @@ public class ResumeField {
 
 		if(experience==null)
 			return;
-		experience = experience.substring(0, experience.indexOf(" "));
+		if(experience.contains(" "))
+			experience = experience.substring(0, experience.indexOf(" "));
 
 		if (experience != null) {
 			this.experience = Float.parseFloat(experience);
@@ -56,7 +57,7 @@ public class ResumeField {
 
 	public void setDob(String dob) {
 		Date date1 = null;
-		if(dob==null)
+		if(dob==null || dob.equals("null"))
 			return;
 		try {
 			String format = "";

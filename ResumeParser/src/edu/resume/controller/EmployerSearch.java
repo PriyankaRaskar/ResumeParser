@@ -1,6 +1,9 @@
 package edu.resume.controller;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.resume.dao.EmployerDAO;
 import edu.resume.dao.JobseekerDAO;
+import edu.resume.entity.Jobseeker;
+import edu.resume.entity.JobseekerSearchInput;
+import edu.resume.entity.ResumeField;
 
 /**
  * Servlet implementation class EmployerSearch
@@ -55,7 +61,16 @@ public class EmployerSearch extends HttpServlet {
 		System.out.println("select1:" + select1);
 		System.out.println("select2:" + select2);
 		System.out.println("select3:" + select3);
-		//boolean status = JobseekerDAO.searchJobseeker();
+		JobseekerSearchInput jobseekerInput=new JobseekerSearchInput(functionarea,education,skill,experience);
+        
+		
+		List<Jobseeker> resumesSearchData = EmployerDAO.searchJobseeker(jobseekerInput);
+		
+		System.out.println("resumesSearchData: "+resumesSearchData);
+		
+		request.setAttribute("jobseekerList",resumesSearchData);
+        RequestDispatcher view = request.getRequestDispatcher("EmployerHome.jsp");
+        view.forward(request, response);
 	}
 
 }

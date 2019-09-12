@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import edu.resume.dao.JobseekerDAO;
+import edu.resume.entity.ResumeConstants;
 import edu.resume.model.ProcessResume;
 
 /**
@@ -26,7 +27,7 @@ import edu.resume.model.ProcessResume;
 @MultipartConfig
 public class UploadResume extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private final String UPLOAD_DIRECTORY = "D:/uploads";
+	
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -62,7 +63,7 @@ public class UploadResume extends HttpServlet {
 			Part filePart = request.getPart("resumeFile"); // Retrieves <input type="file" name="file">
 			String resumeFileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
 			InputStream uploadStream = filePart.getInputStream();
-			File resumeFolder = new File(UPLOAD_DIRECTORY + File.separator + jid);
+			File resumeFolder = new File(ResumeConstants.UPLOAD_DIRECTORY + File.separator + jid);
 			if (resumeFolder.exists()) {
 				deleteResumes(resumeFolder);
 			} else {
@@ -70,7 +71,7 @@ public class UploadResume extends HttpServlet {
 			}
 
 			System.out.println("resumeFileName: " + resumeFileName);
-			String completePath = UPLOAD_DIRECTORY + File.separator + jid + File.separator + resumeFileName;
+			String completePath = ResumeConstants.UPLOAD_DIRECTORY + File.separator + jid + File.separator + resumeFileName;
 			Path path = Paths.get(completePath);
 			System.out.println("path:" + path);
 			Files.copy(uploadStream, path);
