@@ -41,7 +41,7 @@
 <div class="w3-display-container mySlides">
   <img src="C:\Users\riyanka\Desktop\reg.png" style="width:100%">
   <div class="w3-display-topright w3-large w3-container w3-padding-16 w3-black">
-    The Rain Forest
+    The Rain Forest. New Comment//
   </div>
 </div>
 
