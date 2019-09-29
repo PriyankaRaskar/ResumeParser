@@ -27,6 +27,10 @@
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <ul class="navbar-nav">
+				<li><a href="index.jsp">Home Page</a></li>
+			</ul>
+      
       
     </div>
   </nav>

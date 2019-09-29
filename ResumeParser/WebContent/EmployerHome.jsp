@@ -27,6 +27,9 @@
 			<div class="container">
 				<a class="navbar-brand" href="index.html">Resume Parser</a>
 			</div>
+			<ul class="navbar-nav">
+				<li><a href="index.jsp">Home Page</a></li>
+			</ul>
 		</nav>
 		<div class="container register-form">
 

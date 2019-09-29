@@ -21,29 +21,25 @@
 
 <body>
 
-	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-
-
-	    <ul class="navbar-nav">
-
-		<li><a href="emplogin.jsp" class="btn btn-primary">Employer Login</a></li>
-		<li><a href="Empregistration.jsp" class="btn btn-primary">Employer Registration</a></li>
-
-	    </ul>
-
-	    <ul class="navbar-nav navbar-collapse justify-content-end">
-
-		    <li><a href="jobseekerlogin.jsp" class="btn btn-primary">JobSeeker Login</a></li>
-		    <li><a href="JobseekerRegistration.jsp" class="btn btn-primary">JobSeeker Registration</a></li>
-
-		</ul>
-
-	</nav>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark"></nav>
 	<!-- Navigation -->
 	<nav
 		class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
 			<a class="navbar-brand" href="index.html">Resume Parser</a>
+
+			<ul class="navbar-nav">
+
+				<li><a href="emplogin.jsp">Employer Login</a></li>
+				<li><a href="Empregistration.jsp">Employer Registration</a></li>
+
+
+
+				<li><a href="jobseekerlogin.jsp">JobSeeker Login</a></li>
+				<li><a href="JobseekerRegistration.jsp">JobSeeker
+						Registration</a></li>
+
+			</ul>
 		</div>
 	</nav>
 

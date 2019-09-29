@@ -65,3 +65,8 @@ body {
 .resume-header ul li{
   display: inline;
 }
+ nav a{
+ color: white;
+ padding: 5px;
+ 
+ }

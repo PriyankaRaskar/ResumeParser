@@ -77,7 +77,9 @@
 		<div class="container">
 			<a class="navbar-brand" href="index.html">Resume Parser</a>
 			
-
+              <ul class="navbar-nav">
+				<li><a href="index.jsp">Home Page</a></li>
+			</ul>
 		</div>
 	</nav>
 	<!-- Page Content -->
