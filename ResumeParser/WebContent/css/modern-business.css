@@ -60,3 +60,8 @@ body {
 .container {
     max-width: 100%;
 }
+
+
+.resume-header ul li{
+  display: inline;
+}

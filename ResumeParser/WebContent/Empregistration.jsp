@@ -27,7 +27,7 @@ function  RegistrationDetail()
     var number = document.forms["RegForm"]["regno"];
     var email = document.forms["RegForm"]["email"];    
     var address = document.forms["RegForm"]["address"];  
-    var uname =  document.forms["RegForm"]["username"];  
+    //var uname =  document.forms["RegForm"]["username"];  
     var pwd = document.forms["RegForm"]["pwd"];  
     var rpwd = document.forms["RegForm"]["rpwd"];  
     var contact = document.forms["RegForm"]["contactdetail"];
@@ -73,12 +73,12 @@ function  RegistrationDetail()
         address.focus(); 
         return false; 
     } 
-    if (uname.value == "")                               
+    /* if (uname.value == "")                               
     { 
         window.alert("Please enter Username"); 
         uname.focus(); 
         return false; 
-    } 
+    } */ 
     if (pwd.value == "")                               
     { 
         window.alert("Please enter Password"); 
@@ -104,6 +104,12 @@ function  RegistrationDetail()
         area.focus(); 
         return false; 
     } 
+    if (pwd.value != rpwd.value ) {
+		window.alert("password Don't Match");
+		rpwd.focus();
+		return false;
+	}
+	return true;
    
    
    
@@ -141,11 +147,11 @@ function  RegistrationDetail()
 					</div>
 					<div class="card-body">
 						<form name="RegForm"
-							onsubmit="RegistrationDetail()" method="post" action="EmployerRegister">
+							onsubmit="return RegistrationDetail()" method="post" action="EmployerRegister">
 							<div class="form-group row">
 								<label for="full_name"
 									class="col-md-4 col-form-label text-md-right">Name of
-									company:</label>
+									company:*</label>
 								<div class="col-md-6">
 									<input type="text" id="full_name" class="form-control"
 										name="cname">
@@ -155,7 +161,7 @@ function  RegistrationDetail()
 							<div class="form-group row">
 								<label for="email_address"
 									class="col-md-4 col-form-label text-md-right">Registration
-									no of company: </label>
+									no of company:* </label>
 								<div class="col-md-6">
 									<input type="text" id="email_address" class="form-control"
 										name="regno">
@@ -165,7 +171,7 @@ function  RegistrationDetail()
 							<div class="form-group row">
 								<label for="user_name"
 									class="col-md-4 col-form-label text-md-right">E-mail
-									Address: </label>
+									Address:* </label>
 								<div class="col-md-6">
 									<input type="text" id="user_name" class="form-control"
 										name="email">
@@ -174,7 +180,7 @@ function  RegistrationDetail()
 
 							<div class="form-group row">
 								<label for="phone_number"
-									class="col-md-4 col-form-label text-md-right">Address:
+									class="col-md-4 col-form-label text-md-right">Address:*
 								</label>
 								<div class="col-md-6">
 									<input type="text" id="phone_number" class="form-control"
@@ -186,37 +192,37 @@ function  RegistrationDetail()
 
 							<div class="form-group row">
 								<label for="permanent_address"
-									class="col-md-4 col-form-label text-md-right">Password:
+									class="col-md-4 col-form-label text-md-right">Password:*
 								</label>
 								<div class="col-md-6">
-									<input type="text" id="permanent_address" class="form-control"
+									<input type="password" id="pwd" class="form-control"
 										name="pwd">
 								</div>
 							</div>
 							<div class="form-group row">
 								<label for="permanent_address"
 									class="col-md-4 col-form-label text-md-right">Re-enter
-									password: </label>
+									password:* </label>
 								<div class="col-md-6">
-									<input type="text" id="permanent_address" class="form-control"
+									<input type="password" id="rpwd" class="form-control"
 										name="rpwd">
 								</div>
 							</div>
 							<div class="form-group row">
 								<label for="permanent_address"
 									class="col-md-4 col-form-label text-md-right">Contact
-									detail: </label>
+									detail:* </label>
 								<div class="col-md-6">
-									<input type="text" id="permanent_address" class="form-control"
+									<input type="text" id="contactdetail" class="form-control"
 										name="contactdetail">
 								</div>
 							</div>
 							<div class="form-group row">
 								<label for="permanent_address"
 									class="col-md-4 col-form-label text-md-right">Functional
-									Area: </label>
+									Area:* </label>
 								<div class="col-md-6">
-									<input type="text" id="permanent_address" class="form-control"
+									<input type="text" id="farea" class="form-control"
 										name="farea">
 								</div>
 							</div>

@@ -56,7 +56,7 @@ Navigation -->
 		<div class="row justify-content-center">
 			<div class="col-md-4"></div>
 			<div class="col-md-4">
-				<input type="submit" value="Upload File" class="btn btn-primary" />
+				<input type="submit" value="Upload File" class="btn btn-primary"  />
 			</div>
 			<div class="col-md-4"></div>
 			</div>
