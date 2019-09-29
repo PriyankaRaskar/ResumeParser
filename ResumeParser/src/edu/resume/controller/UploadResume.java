@@ -89,7 +89,7 @@ public class UploadResume extends HttpServlet {
 					resumeStream.close();
 			}
 		}
-
+		request.getRequestDispatcher("UploadSuccessful.jsp").forward(request, response);
 	}
 
 	//delete already present resumes
